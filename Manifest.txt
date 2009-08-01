@@ -7,5 +7,8 @@ lib/composite-ruby.rb
 script/console
 script/destroy
 script/generate
-test/test_composite-ruby.rb
-test/test_helper.rb
+spec/spec_helper.rb
+spec/simple_composite_spec.rb
+spec/unbalanced_composite_spec.rb
+spec/helpers/number_tree.rb
+spec/helpers/organization.rb
