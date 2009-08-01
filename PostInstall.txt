@@ -1,0 +1,3 @@
+
+For more information on composite-ruby, see http://composite-ruby.rubyforge.org
+or inspect the test suite for example usage.

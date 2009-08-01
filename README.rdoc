@@ -1,0 +1,91 @@
+= composite-ruby
+
+http://github.com/fredgeorge/composite-ruby
+
+== DESCRIPTION:
+
+These class(es) ease the ability to implement a Composite pattern [GoF] and a supporting Visitor pattern [GoF].
+Pattern::Composite extends Enumerable, allowing rich iteration across the children of the Composite. 
+Composite patterns are useful anywhere there is a hierarchy or tree.  Examples include organization
+structures, parse trees for expressions, and anytime a collection of a collection (of a collection, 
+etc.) occurs.
+
+  require 'composite-ruby'
+  class MyClass
+    include Pattern::Composite
+    ...
+  end
+
+Mixed-in methods include:
+  <<(child)             - add a sub-component
+  add(child)            - alias for <<
+  each                  - iterating through children
+  total(:accessor)      - sum the values of the specified accessor of the leaves
+  aggregate(:accessor)  - return an array of all elements of the specified accessor of the leaves
+  collecting(:accessor) - return a merged collection of all the collections from the leaves
+  
+In addition, recursive accessors can be created.  For example for totaling the values in leaves:
+
+  class MyClass
+    include Pattern::Composite
+    recursive_total :var1, :var2, ...
+    ...
+  end
+    
+This creates recursive methods that return the total all the values of var1 in the leaves.  See
+the RSpec test, spec/unbalanced_composite_spec.rb, for a comprehensive example of usage.
+
+== FEATURES/PROBLEMS:
+
+Support for Composite pattern, including generating methods for leaves for:
+  totals:                     recursive_total :var1, :var2, :method1, :method2
+  aggregating value answers:  recursive_values :var3, :var4, :method3, :method4
+  collecting array answers:   recursive_collecting :var5, :var6, :method5, :method6
+  
+No support of Visitor pattern (yet)
+
+== SYNOPSIS:
+
+  require 'composite-ruby'
+  class MyClass
+    include Pattern::Composite
+    recursive_total :to_i, :to_f
+    ...
+  end
+  
+  x = MyClass.new 3, 4
+  x << 5
+  x.to_i    # => 12
+
+== REQUIREMENTS:
+
+RSpec (if you want to run the tests)
+
+== INSTALL:
+
+sudo gem install composite-ruby
+
+== LICENSE:
+
+(The MIT License)
+
+Copyright (c) 2009 FIXME full name
+
+Permission is hereby granted, free of charge, to any person obtaining
+a copy of this software and associated documentation files (the
+'Software'), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish,
+distribute, sublicense, and/or sell copies of the Software, and to
+permit persons to whom the Software is furnished to do so, subject to
+the following conditions:
+
+The above copyright notice and this permission notice shall be
+included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
+SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
