@@ -1,3 +1,5 @@
+# :enddoc:
+
 module Pattern
   module Test
     

@@ -1,3 +1,5 @@
+# :enddoc:
+
 require File.expand_path(File.join(File.dirname(__FILE__), 'spec_helper'))
 
 describe 'Simple', Pattern::Composite do
@@ -29,10 +31,20 @@ describe 'Simple', Pattern::Composite do
     tree.to_f.should == 10
   end
   
-  it "returns int as a total if floats have no fraction" do
+  it "returns int as a total if float total needs no fraction" do
     tree = number_tree.new 3.5, 1.75, 4.75
     tree.to_f.should == 10
     tree.to_f.class.should == Fixnum  
+  end
+  
+  it "can total against methods as well as attributes" do
+    tree = number_tree.new 3, 4
+    tree.square.should == 25
+  end
+  
+  it "supports iteration across the children" do
+    tree = number_tree.new 3, 4, 5
+    tree.inject(0) { |total, child| total + child.to_i - 1 }.should == 9
   end
   
   private

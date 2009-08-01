@@ -1,3 +1,5 @@
+# :enddoc:
+
 require 'rubygems'
 require 'spec'
 require 'spec/mocks'

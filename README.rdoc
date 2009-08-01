@@ -65,11 +65,22 @@ RSpec (if you want to run the tests)
 
 sudo gem install composite-ruby
 
+== ACKNOWLEDGEMENTS
+
+The path here was hardly direct.  Key contributors to the journey were:
+* Erich Gamma and the rest of the Gang of Four [GoF] for Design Patterns
+* Eric Gold for beating me about the head with Smalltalk and patterns
+* Matz (Yukihiro Matsumoto) for inventing a cool language Ruby
+* Dave (Pragmatic) Thomas for talking about it
+* Obie Fernandez for bullying Ruby into ThoughtWorks
+* Roy Singham for listening to Obie
+* Neil Hutchinson (TrafficBroker) for creating an environment championing innovation
+
 == LICENSE:
 
 (The MIT License)
 
-Copyright (c) 2009 FIXME full name
+Copyright (c) 2009 Fred George
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the

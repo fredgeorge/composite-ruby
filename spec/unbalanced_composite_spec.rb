@@ -1,3 +1,5 @@
+# :enddoc:
+
 require File.expand_path(File.join(File.dirname(__FILE__), 'spec_helper'))
 
 describe 'Unbalanced', Pattern::Composite do
@@ -30,6 +32,15 @@ describe 'Unbalanced', Pattern::Composite do
   
   it "can collect leaf array responses" do
     @company.skills.uniq.sort.should == ['Assertive', 'Cynical', 'Eating', 'Greedy', 'Leaping', 'Mayhem', 'Naive', 'Shy', 'Volatile']
+  end
+  
+  it "returns 0 if there are no leaves from which to create a total" do
+    group.new(group.new, group.new).salary.should == 0
+  end
+  
+  it "returns an empty Array if there are no leaves from which to extract values or a collecting parameter" do
+    group.new(group.new, group.new).name.should == []
+    group.new(group.new, group.new).skills.should == []
   end
   
   private
